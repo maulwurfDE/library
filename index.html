@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Family Library</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+    <pre id="object"></pre>
+
+     <h1>Family Library</h1>
+
+     <div id="parent-container">
+     <div id="container">
+
+    
+      <table style="width:75%" id="myTable">
+      <th>Title</th>
+      <th>Author</th>
+      <th>Pages</th>
+      <th id="read">Read</th>
+      <th id="member">Family Member</th>
+      <th></th>
+      </table>
+
+      <button onClick="show()" name="showButton" id="newbook">NEW BOOK</button>
+<br/><br/>
+      <form style="display:none;" id="form" onsubmit="return mySubmit()">
+      <label>Title:</label>
+        <input type="text" placeholder="The Golden Compass" id="title" class="text"><br/><br/>
+        <label>Author:</label>
+      <input type="text" placeholder="Philip Pullman" id="author" class="text"><br/><br/>
+      <label>Pages:</label>
+      <input type="text" placeholder="399" id="pages" class="text"><br/><br/>
+      <label>Your Name:</label>
+      <input type="text" placeholder="Moritz" id="familyMember" class="text"><br/><br/>
+      <label>Have you read the book before?</label>
+      <div id="radioLeft"><input type="radio" name="read" id="yes">Yes
+      <input type="radio" name="read"> No </div>
+    <br/><br/>
+
+      <input type="submit" value="Add" id="submit">
+    </form>
+
+  
+     </div>
+     </div>
+  
+
+
+
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/7.6.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/7.6.1/firebase-analytics.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+
+<script src="script.js"></script>
+
+    </body>
+</html>
