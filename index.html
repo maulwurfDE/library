@@ -27,7 +27,7 @@
       <button onClick="show()" name="showButton" id="newbook">NEW BOOK</button>
 <br/><br/>
       <form style="display:none;" id="form" onsubmit="return mySubmit()">
-        <div id="close" onClick="hide()">&#10006;</div>
+        <a id="close" onClick="hide()">&#10006;</a>
       <label>Title:</label>
         <input type="text" placeholder="The Golden Compass" id="title" class="text"><br/><br/>
         <label>Author:</label>
@@ -39,9 +39,9 @@
       <label>Have you read the book before?</label>
       <div id="radioLeft"><input type="radio" name="read" id="yes">Yes
       <input type="radio" name="read"> No </div>
-    <br/><br/>
+    <br/>
 
-      <input type="submit" value="Add" id="submit">
+      <div id="wrapperAdd"><input type="submit" value="Add" id="submit"></div>
     </form>
 
   
