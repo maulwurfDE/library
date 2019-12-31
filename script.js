@@ -51,17 +51,18 @@ if (obj.hasOwnProperty(prop)) {
     mytbl.getElementsByTagName("tbody")[0].innerHTML = mytbl.rows[0].innerHTML;
 
     rootRef.once('value', snapshot => {
-      console.log(snapshot.val());
+     // console.log(snapshot.val());
     
       let obj = snapshot.val();
       let count = 0;
-    for (prop in obj) {
+    for (let prop in obj) {
+    
     
 
     if (obj.hasOwnProperty(prop)) {
       count++;
-      console.log("o." + prop + " = " + obj[prop])
-      console.log(obj[prop].title);
+     // console.log("o." + prop + " = " + obj[prop])
+     // console.log(obj[prop].title);
   
       let table = document.getElementById("myTable");
       let row = table.insertRow(count);
@@ -78,13 +79,15 @@ if (obj.hasOwnProperty(prop)) {
 
 
       read.addEventListener('click', function(event){ 
-        console.log(read.innerHTML);
+      
          if(this.innerHTML === "<center>✔</center>") {
           //  this.innerHTML = "<center>&#10005;</center>";
           let newData = {
             read: "<center>&#10005;</center>"
           } 
           database.ref("/blubb").child(prop).update(newData);
+       // console.log(prop);
+          // console.log("Test");
           // mytbl.getElementsByTagName("tbody")[0].innerHTML = mytbl.rows[0].innerHTML;
            render();
           
@@ -97,6 +100,7 @@ if (obj.hasOwnProperty(prop)) {
             read: "<center>&#x2714;</center>"
           } 
           rootRef.child(prop).update(newData);
+          // console.log("Test2");
            
            render();
  
