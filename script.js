@@ -180,6 +180,11 @@ if (obj.hasOwnProperty(prop)) {
     document.getElementById("form").style.display = "block";
   }
 
+  function hide() {
+    document.getElementById("form").style.display = "none";
+  }
+
+
   function mySubmit() {
 
     let bookRead;
