@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "library-65749"
+    "default": "library-65749",
+    "master": "library-65749"
   }
 }

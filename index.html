@@ -7,7 +7,7 @@
   </head>
   <body>
 
-    <pre id="object"></pre>
+  
 
      <h1>Family Library</h1>
 
@@ -52,17 +52,39 @@
 
 
 
+
+
+
 <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="/__/firebase/7.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="/__/firebase/7.6.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
 
-<!-- Initialize Firebase -->
-<script src="/__/firebase/init.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDd0FGsvoYOvISxauGTiNiZiBKF7Ic7yDk",
+    authDomain: "library-65749.firebaseapp.com",
+    databaseURL: "https://library-65749.firebaseio.com",
+    projectId: "library-65749",
+    storageBucket: "library-65749.appspot.com",
+    messagingSenderId: "165834123361",
+    appId: "1:165834123361:web:e31435ee24ca8478282220",
+    measurementId: "G-KHWLF2ZJ4C"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
 
 <script src="script.js"></script>
+
 
     </body>
 </html>

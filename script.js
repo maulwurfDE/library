@@ -1,29 +1,128 @@
-let myLibrary = [];
+// let myLibrary = [];
 
 function Book(title, author, pages, read, member) {
     return {title, author, pages, read, member,
-    info: function() {return(`${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`)} }
+  //  info: function() {return(`${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`)}
+   }
     
     }
 
     function addBookToLibrary(title,author,pages,read,member) {
     const newBook = new Book(title,author,pages,read,member)  // do stuff here
-    myLibrary.push(newBook);
-    }
+  //  myLibrary.push(newBook);
+    rootRef.push(newBook);
+  }
 
+  const database = firebase.database();
+  const rootRef = database.ref("/blubb");
+ // rootRef.set([]);
+
+/* rootRef.on('value', snapshot => {
+  console.log(snapshot.val());
+
+  let obj = snapshot.val();
+
+for (prop in obj) {
+
+  var mytbl = document.getElementById("myTable");
+  mytbl.getElementsByTagName("tbody")[0].innerHTML = mytbl.rows[0].innerHTML;
+
+
+if (obj.hasOwnProperty(prop)) {
+  console.log("o." + prop + " = " + obj[prop])
+  console.log(obj[prop].title);
+
+
+
+
+}
+
+}
+
+
+
+
+});
+*/
 
   function render() {
 
     var mytbl = document.getElementById("myTable");
     mytbl.getElementsByTagName("tbody")[0].innerHTML = mytbl.rows[0].innerHTML;
 
+    rootRef.once('value', snapshot => {
+      console.log(snapshot.val());
+    
+      let obj = snapshot.val();
+      let count = 0;
+    for (prop in obj) {
+    
+
+    if (obj.hasOwnProperty(prop)) {
+      count++;
+      console.log("o." + prop + " = " + obj[prop])
+      console.log(obj[prop].title);
+  
+      let table = document.getElementById("myTable");
+      let row = table.insertRow(count);
+      row.insertCell(0).innerHTML = obj[prop].title;
+      row.insertCell(1).innerHTML = obj[prop].author;
+      row.insertCell(2).innerHTML = obj[prop].pages;
+     let read = row.insertCell(3);
+     read.innerHTML = obj[prop].read;
+
+     read.setAttribute('data-attribute',prop);
+
+
+      row.insertCell(4).innerHTML = obj[prop].member;
+
+
+      read.addEventListener('click', function(event){ 
+        console.log(read.innerHTML);
+         if(this.innerHTML === "<center>✔</center>") {
+          //  this.innerHTML = "<center>&#10005;</center>";
+          let newData = {
+            read: "<center>&#10005;</center>"
+          } 
+          database.ref("/blubb").child(prop).update(newData);
+          // mytbl.getElementsByTagName("tbody")[0].innerHTML = mytbl.rows[0].innerHTML;
+           render();
+          
+     
+         }
+         else if(this.innerHTML === "<center>✕</center>") {
+          // this.innerHTML = "<center>&#x2714;</center>";
+          // mytbl.getElementsByTagName("tbody")[0].innerHTML = mytbl.rows[0].innerHTML; 
+          let newData = {
+            read: "<center>&#x2714;</center>"
+          } 
+          rootRef.child(prop).update(newData);
+           
+           render();
+ 
+         }
+         
+      }) 
+
+      let buttonCell = row.insertCell(5);
+      buttonCell.className = "remove";
+      buttonCell.innerHTML = `<button id="${prop}" onclick="remove('${prop}')" class="removeButton">Remove</button>`
+     
+    
+    
+    
+    }
+    
+    }
+
+  })
+}
+
+
+/*
+
     myLibrary.forEach(function (item,index) {
-   /*   const container = document.getElementById('container');
-      const div = document.createElement('div');
-      div.setAttribute('id', index); 
-      container.appendChild(div);
-      document.getElementById(index).innerHTML = myLibrary[index].info();
-     */ 
+
       let table = document.getElementById("myTable");
       let row = table.insertRow(index+1);
       row.insertCell(0).innerHTML = myLibrary[index].title;
@@ -36,6 +135,7 @@ function Book(title, author, pages, read, member) {
 
 
       row.insertCell(4).innerHTML = myLibrary[index].member;
+
 
      read.addEventListener('click', function(event){ 
        console.log(read.innerHTML);
@@ -66,12 +166,13 @@ function Book(title, author, pages, read, member) {
     })
 
   }
-
+*/
+  
   //document.querySelectorAll('[data-attribute]')
 
-  addBookToLibrary("The Hobbit","J.R.R. Tolkien",500,"<center>&#x2714;</center>","Moritz");
-  addBookToLibrary("The Hobbit","J.R.R. Tolkien",500,"<center>&#x2714;</center>","Moritz");
-  addBookToLibrary("The Hobbit","J.R.R. Tolkien",500,"<center>&#x2714;</center>","Moritz");
+//  addBookToLibrary("The Hobbit","J.R.R. Tolkien",500,"<center>&#x2714;</center>","Moritz");
+//  addBookToLibrary("The Hobbit","J.R.R. Tolkien",500,"<center>&#x2714;</center>","Moritz");
+//  addBookToLibrary("The Hobbit","J.R.R. Tolkien",500,"<center>&#x2714;</center>","Moritz");
   
   window.onload = function () {this.render();}
 
@@ -99,35 +200,15 @@ function Book(title, author, pages, read, member) {
     return false;
   }
 
-  function remove(index) {
-myLibrary.splice(index, 1);
+  function remove(prop) {
+// myLibrary.splice(prop, 1);
+rootRef.child(prop).remove();
 var mytbl = document.getElementById("myTable");
 mytbl.getElementsByTagName("tbody")[0].innerHTML = mytbl.rows[0].innerHTML;
 render();
   }
 
-  function unread() {
 
-  }
+    
 
-  (function () { 
-  const firebaseConfig = {
-    apiKey: "AIzaSyDd0FGsvoYOvISxauGTiNiZiBKF7Ic7yDk",
-    authDomain: "library-65749.firebaseapp.com",
-    databaseURL: "https://library-65749.firebaseio.com",
-    projectId: "library-65749",
-    storageBucket: "library-65749.appspot.com",
-    messagingSenderId: "165834123361",
-    appId: "1:165834123361:web:e31435ee24ca8478282220",
-    measurementId: "G-KHWLF2ZJ4C"
-  };
 
-  firebase.initializeApp(firebaseConfig);
-
-  const preObject = document.getElementById('object');
-
-  const dbRefObject = firebase.database().ref.child('object');
-
-  dbRefObject.on('value', snap => console.log(snap.val()));
-
-}());
