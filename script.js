@@ -1,11 +1,22 @@
+
+
 // let myLibrary = [];
 
-function Book(title, author, pages, read, member) {
-    return {title, author, pages, read, member,
-  //  info: function() {return(`${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`)}
-   }
+
+// function Book(title, author, pages, read, member) {
+//     return {title, author, pages, read, member,
+//   //  info: function() {return(`${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`)}
+//    }
     
-    }
+//     }
+
+
+class Book {
+
+  constructor(title,author,pages,read,member) {
+    return {title, author, pages, read, member}
+  }
+}
 
     function addBookToLibrary(title,author,pages,read,member) {
     const newBook = new Book(title,author,pages,read,member)  // do stuff here
@@ -49,10 +60,10 @@ if (obj.hasOwnProperty(prop)) {
 
     var mytbl = document.getElementById("myTable");
     mytbl.getElementsByTagName("tbody")[0].innerHTML = mytbl.rows[0].innerHTML;
-
+    spinnerWorks.spin();
     rootRef.once('value', snapshot => {
-     // console.log(snapshot.val());
-    
+     spinnerWorks.stop();
+      // console.log(snapshot.val());
       let obj = snapshot.val();
       let count = 0;
     for (let prop in obj) {
@@ -218,6 +229,4 @@ render();
   }
 
 
-    
-
-
+  
