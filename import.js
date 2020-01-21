@@ -1,7 +1,7 @@
 // import {Spinner} from '/spin.js';
 var spinnerWorks;
 
-window.addEventListener("load",function(event) {
+// window.addEventListener("load",function(event) {
 var opts = {
  lines: 13, // The number of lines to draw
  length: 38, // The length of each line
@@ -25,4 +25,4 @@ var opts = {
 
 var target = document.getElementById('container');
 spinnerWorks = new Spinner(opts).spin(target);
-}, false);
+// }, false);
