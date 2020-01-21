@@ -60,7 +60,7 @@ if (obj.hasOwnProperty(prop)) {
 
     var mytbl = document.getElementById("myTable");
     mytbl.getElementsByTagName("tbody")[0].innerHTML = mytbl.rows[0].innerHTML;
-    spinnerWorks.spin();
+    spinnerWorks.spin(document.getElementById('container'));
     rootRef.once('value', snapshot => {
      spinnerWorks.stop();
       // console.log(snapshot.val());
