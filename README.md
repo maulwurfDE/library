@@ -4,7 +4,7 @@ Create a basic library app.
 
 ## Demo
 
-[Demo](https://nearmint.github.io/library)
+[Demo](https://maulwurfde.github.io/library)
 
 ## Built with
 
